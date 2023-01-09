@@ -1,0 +1,267 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+
+if game.PlaceId == 9498006165 then
+local Window = OrionLib:MakeWindow({Name = "Noob Hub | [UPD24] Tapping Simulator! 🐾", HidePremium = true, IntroText = "Noob Hub", IntroIcon = "rbxassetid://7734059095", SaveConfig = true, ConfigFolder = "NoobHubTappingSim"})
+
+OrionLib:MakeNotification({
+	Name = "Succesfully Loaded",
+	Content = "Noob Hub has been successfully loaded",
+	Image = "rbxassetid://7733964370",
+	Time = 5
+})
+
+OrionLib:MakeNotification({
+	Name = "User",
+	Content = "You are logged in as "..Player.Name..".",
+	Image = "rbxassetid://7733964370",
+	Time = 5
+})
+
+-- Values
+
+_G.autoTap = true
+_G.autoRebirth = true
+_G.autoHatch = true
+_G.autoclaimRR = true
+_G.rebirthAmount = "1"
+_G.selectEgg = "Starter"
+
+-- Limited Time Event Values
+
+_G.autoHatchLTE = true
+_G.selectLTE = "75M Egg"
+
+-- Functions
+
+function autoTap()
+    while _G.autoTap == true do
+        game.ReplicatedStorage.Events.Tap:FireServer("Main")
+        wait(0.00001)
+     end
+    end
+
+function autoRebirth()
+    while _G.autoRebirth == true do
+        game.ReplicatedStorage.Events.Rebirth:FireServer(_G.rebirthAmount)
+        wait(0.00001)
+     end
+    end
+
+function autoHatch()
+    while _G.autoHatch == true do
+        game.ReplicatedStorage.Events.HatchEgg:InvokeServer({},_G.selectEgg,1)
+        wait(0.00001)
+    end
+end
+
+function autoHatchLTE()
+    while _G.autoHatchLTE == true do
+        game.ReplicatedStorage.Events.HatchEgg:InvokeServer({},_G.selectLTE,1)
+        wait(0.00001)
+    end
+end
+
+function autoclaimRR()
+    while _G.autoclaimRR == true do
+        game.ReplicatedStorage.Events.ClaimRandomReward:FireServer()
+        wait(3)
+    end
+end
+
+-- Tabs
+
+local CharacterTab = Window:MakeTab({
+	Name = "Character",
+	Icon = "rbxassetid://7743871002",
+	PremiumOnly = false
+})
+
+local FarmTab = Window:MakeTab({
+	Name = "Auto Farm",
+	Icon = "rbxassetid://7733955511",
+	PremiumOnly = false
+})
+
+local EggsTab = Window:MakeTab({
+	Name = "Eggs",
+	Icon = "rbxassetid://8997385940",
+	PremiumOnly = false
+})
+
+local MiscTab = Window:MakeTab({
+	Name = "Miscellaneous",
+	Icon = "rbxassetid://7743875263",
+	PremiumOnly = false
+})
+
+-- Sliders
+
+CharacterTab:AddSlider({
+	Name = "WalkSpeed",
+	Min = 0,
+	Max = 200,
+	Default = 16,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "WalkSpeed",
+	Callback = function(speed)
+		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = speed
+	end    
+})
+
+-- Toggles
+
+FarmTab:AddToggle({
+	Name = "Auto Tap",
+	Default = false,
+	Callback = function(Value)
+		_G.autoTap = Value
+        autoTap()
+	end    
+})
+
+FarmTab:AddToggle({
+	Name = "Auto Rebirth",
+	Default = false,
+	Callback = function(Value)
+		_G.autoRebirth = Value
+        autoRebirth()
+	end    
+})
+
+FarmTab:AddToggle({
+	Name = "Auto Claim Reward",
+	Default = false,
+	Callback = function(Value)
+		_G.autoclaimRR = Value
+        autoclaimRR()
+	end    
+})
+
+EggsTab:AddToggle({
+	Name = "Auto Hatch",
+	Default = false,
+	Callback = function(Value)
+		_G.autoHatch = Value
+        autoHatch()
+	end    
+})
+
+EggsTab:AddToggle({
+	Name = "Auto Hatch LTE",
+	Default = false,
+	Callback = function(Value)
+		_G.autoHatchLTE = Value
+        autoHatchLTE()
+	end    
+})
+
+-- Buttons
+
+
+
+-- Adaptive Inputs
+
+CharacterTab:AddTextbox({
+	Name = "Custom Walkspeed",
+	Default = "16",
+	TextDisappear = false,
+	Callback = function(speed)
+		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = speed
+	end	  
+})
+
+-- Dropdowns
+
+EggsTab:AddDropdown({
+	Name = "Select Egg",
+	Default = "Starter Egg",
+	Options = {"Starter Egg", "Wood Egg", "Jungle Egg"},
+	Callback = function(Value)
+	end
+})
+
+EggsTab:AddDropdown({
+	Name = "Limited Egg",
+	Default = "LTE",
+	Options = {"75 Million Egg"},
+	Callback = function(Value)
+	end
+})
+
+FarmTab:AddDropdown({
+	Name = "Auto Rebirth Amount",
+	Default = "1",
+	Options = {"1", "5", "10", "20"},
+	Callback = function(Value)
+        _G.rebirthAmount = Value
+	end
+})
+
+
+OrionLib:Init()
+end
+
+if game.PlaceId == 4483381587 then
+local Window = OrionLib:MakeWindow({Name = "Noob Hub | a literal baseplate", HidePremium = false, IntroText = "Noob Hub", IntroIcon = "rbxassetid://7734059095", SaveConfig = true, ConfigFolder = "NoobHubBaseplate"})
+
+OrionLib:MakeNotification({
+	Name = "Succesfully Loaded!",
+	Content = "Noob Hub has been successfully loaded.",
+	Image = "rbxassetid://7733964370",
+	Time = 5
+})
+
+-- Tabs
+
+local CharacterTab = Window:MakeTab({
+	Name = "Character",
+	Icon = "rbxassetid://7743871002",
+	PremiumOnly = false
+})
+
+local ScriptsTab = Window:MakeTab({
+	Name = "Scripts",
+	Icon = "rbxassetid://7733749837",
+	PremiumOnly = false
+})
+
+-- Buttons
+
+ScriptsTab:AddButton({
+	Name = "Infinite Yield",
+	Callback = function()
+        print("Testing rn.")
+  	end    
+})
+
+-- Sliders
+
+CharacterTab:AddSlider({
+	Name = "WalkSpeed",
+	Min = 0,
+	Max = 200,
+	Default = 16,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "WalkSpeed",
+	Callback = function(speed)
+		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = speed
+	end    
+})
+
+-- Adaptive Inputs
+
+CharacterTab:AddTextbox({
+	Name = "Custom Walkspeed",
+	Default = "16",
+	TextDisappear = false,
+	Callback = function(speed)
+		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = speed
+	end	  
+})
+
+
+
+OrionLib:Init()
+end
