@@ -1,0 +1,63 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "Noob Hub | a literal baseplate", HidePremium = false, IntroText = "Noob Hub", IntroIcon = "rbxassetid://7734059095", SaveConfig = true, ConfigFolder = "NoobHubBaseplate"})
+
+OrionLib:MakeNotification({
+	Name = "Succesfully Loaded!",
+	Content = "Noob Hub has been successfully loaded.",
+	Image = "rbxassetid://7733964370",
+	Time = 5
+})
+
+-- Tabs
+
+local CharacterTab = Window:MakeTab({
+	Name = "Character",
+	Icon = "rbxassetid://7743871002",
+	PremiumOnly = false
+})
+
+local ScriptsTab = Window:MakeTab({
+	Name = "Scripts",
+	Icon = "rbxassetid://7733749837",
+	PremiumOnly = false
+})
+
+-- Buttons
+
+ScriptsTab:AddButton({
+	Name = "Infinite Yield",
+	Callback = function()
+        print("Testing rn.")
+  	end    
+})
+
+-- Sliders
+
+CharacterTab:AddSlider({
+	Name = "WalkSpeed",
+	Min = 0,
+	Max = 200,
+	Default = 16,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "WalkSpeed",
+	Callback = function(speed)
+		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = speed
+	end    
+})
+
+-- Adaptive Inputs
+
+CharacterTab:AddTextbox({
+	Name = "Custom Walkspeed",
+	Default = "16",
+	TextDisappear = false,
+	Callback = function(speed)
+		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = speed
+	end	  
+})
+
+
+
+OrionLib:Init()
+end
