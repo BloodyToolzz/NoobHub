@@ -1,5 +1,3 @@
-local Window = OrionLib:MakeWindow({Name = "Noob Hub | a literal baseplate", HidePremium = false, IntroText = "Noob Hub", IntroIcon = "rbxassetid://7734059095", SaveConfig = true, ConfigFolder = "NoobHubBaseplate"})
-
 OrionLib:MakeNotification({
 	Name = "Succesfully Loaded!",
 	Content = "Noob Hub has been successfully loaded.",
