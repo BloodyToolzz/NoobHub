@@ -6,7 +6,7 @@ if game.PlaceId == 9498006165 then
     getgenv().SecureMode = true
     
     local Window = Rayfield:CreateWindow({
-        Name = "Noob Hub | [UPD24] Tapping Simulator! 🐾",
+        Name = "Noob Hub | [⌛] Tapping Simulator! 🐾",
         LoadingTitle = "Loading Noob Hub",
         LoadingSubtitle = "by Not_Noob",
         ConfigurationSaving = {
