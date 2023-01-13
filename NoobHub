@@ -1,7 +1,7 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 
 if game.PlaceId == 9498006165 then
-local Window = OrionLib:MakeWindow({Name = "Noob Hub | [UPD24] Tapping Simulator! 🐾", HidePremium = true, IntroText = "Noob Hub", IntroIcon = "rbxassetid://7734059095", SaveConfig = true, ConfigFolder = "NoobHubTappingSim"})
+local Window = OrionLib:MakeWindow({Name = "Noob Hub | [⌛] Tapping Simulator! 🐾", HidePremium = true, IntroText = "Noob Hub", IntroIcon = "rbxassetid://7734059095", SaveConfig = true, ConfigFolder = "NoobHubTappingSim"})
 
 OrionLib:MakeNotification({
 	Name = "Succesfully Loaded",
