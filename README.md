@@ -1,7 +1,7 @@
 # NoobHub
 This is the source of my Roblox Script Hub, Noob Hub. 
 
-### Reasons it's not obfuscated
+### <s>Reasons it's not obfuscated</s>
 - Free obfuscators are destroying my script and are very easy to decompile. :/
 - Paid obfuscators are obviously goated, but I'm broke so I can't use them.
 
