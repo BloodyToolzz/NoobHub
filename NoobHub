@@ -1,0 +1,564 @@
+local Rayfield = loadstring(game:HttpGet('https://raw.githubusercontent.com/shlexware/Rayfield/main/source'))()
+
+-- Tapping Simulator!
+
+if game.PlaceId == 9498006165 then
+    getgenv().SecureMode = true
+    
+    local Window = Rayfield:CreateWindow({
+        Name = "Noob Hub | [⌛] Tapping Simulator! 🐾",
+        LoadingTitle = "Tapping Simulator - Noob Hub",
+        LoadingSubtitle = "by Not_Noob",
+        ConfigurationSaving = {
+           Enabled = true,
+           FolderName = true,
+           FileName = "NoobHub"
+        },
+        Discord = {
+           Enabled = true,
+           Invite = "zqZYaGxfVa", 
+           RememberJoins = true 
+        },
+        KeySystem = true, 
+        KeySettings = {
+           Title = "Noob Hub",
+           Subtitle = "Noob Hub | Key System",
+           Note = "Join the Discord (discord.gg/zqZYaGxfVa)",
+           FileName = "NoobHubKey",
+           SaveKey = true,
+           GrabKeyFromSite = true, 
+           Key = "https://pastebin.com/raw/6qVXtYcY"
+        }
+     })
+
+     -- Notifications
+     Rayfield:Notify({
+         Title = "Noob Hub | Info",
+         Content = "Press [RightShift] to hide GUI",
+         Duration = 6.5,
+         Image = 7733715400,
+         Actions = {
+            Ignore = {
+               Name = "Okay!",
+               Callback = function()
+               print("The user tapped Okay!")
+            end
+         },
+      },
+      })
+
+      Rayfield:Notify({
+        Title = "Updates",
+        Content = "Join the Discord to stay updated. discord.gg/zqZYaGxfVa",
+        Duration = 6.5,
+        Image = 7733715400,
+        Actions = {
+           Ignore = {
+              Name = "Okay!",
+              Callback = function()
+              print("The user tapped Okay!")
+           end
+        },
+     },
+     })
+
+-- Values
+
+_G.autoTap = true
+_G.autoRebirth = true
+_G.autoHatch = true
+_G.autoclaimRR = true
+_G.rebirthAmount = "1"
+_G.selectEgg = "Starter"
+
+-- Limited Time Event Values
+
+_G.autoHatchLTE = true
+_G.selectLTE = "75M Egg"
+
+-- Functions
+
+function autoTap()
+    while _G.autoTap == true do
+        game.ReplicatedStorage.Events.Tap:FireServer("Main")
+        wait(0.00001)
+     end
+    end
+
+function autoRebirth()
+    while _G.autoRebirth == true do
+        game.ReplicatedStorage.Events.Rebirth:FireServer(_G.rebirthAmount)
+        wait(0.00001)
+     end
+    end
+
+function autoHatch()
+    while _G.autoHatch == true do
+        game.ReplicatedStorage.Events.HatchEgg:InvokeServer({},_G.selectEgg,1)
+        wait(0.00001)
+    end
+end
+
+function autoHatchLTE()
+    while _G.autoHatchLTE == true do
+        game.ReplicatedStorage.Events.HatchEgg:InvokeServer({},_G.selectLTE,1)
+        wait(0.00001)
+    end
+end
+
+function autoclaimRR()
+    while _G.autoclaimRR == true do
+        game.ReplicatedStorage.Events.ClaimRandomReward:FireServer()
+        wait(3)
+    end
+end
+
+-- Tabs
+
+local CharacterTab = Window:CreateTab("Character", 7743871002)
+local FarmTab = Window:CreateTab("Auto Farm", 7733955511)
+local EggsTab = Window:CreateTab("Eggs", 8997385940)
+local MiscTab = Window:CreateTab("Miscellaneous", 7743875263)
+
+-- Sections
+
+local CharacterSection = CharacterTab:CreateSection("Walkspeed")
+local MiscTPSection = MiscTab:CreateSection("Teleports")
+
+-- Sliders
+
+local Slider = CharacterTab:CreateSlider({
+    Name = "Walkspeed",
+    Range = {0, 200},
+    Increment = 1,
+    Suffix = "Speed",
+    CurrentValue = 16,
+    Flag = "WalkspeedSlider", 
+    Callback = function(Value)
+     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+    end,
+ })
+
+ -- Toggles
+
+local Label = EggsTab:CreateLabel("Auto Hatch works but it's buggy") -- Auto Hatch. Hatches pets but also hatches from Starter Egg.
+local AutoTapToggle = FarmTab:CreateToggle({
+    Name = "Auto Tap",
+    CurrentValue = false,
+    Flag = "AutoTapToggle",
+    Callback = function(Value)
+        _G.autoTap = Value
+        autoTap()
+    end,
+})
+
+local AutoRebirthToggle = FarmTab:CreateToggle({
+    Name = "Auto Rebirth",
+    CurrentValue = false,
+    Flag = "AutoRebirthToggle",
+    Callback = function(Value)
+        _G.autoRebirth = Value
+        autoRebirth()
+    end,
+})
+
+local AutoClaimRewardToggle = FarmTab:CreateToggle({
+    Name = "Auto Claim Reward",
+    CurrentValue = false,
+    Flag = "AutoClaimRewardToggle",
+    Callback = function(Value)
+        _G.autoclaimRR = Value
+        autoclaimRR()
+    end,
+})
+
+local AutoHatchToggle = EggsTab:CreateToggle({
+    Name = "Auto Hatch",
+    CurrentValue = false,
+    Flag = "AutoHatchToggle",
+    Callback = function(Value)
+        _G.autoHatch = Value
+        autoHatch()
+    end,
+})
+
+local AutoHatchLTEToggle = EggsTab:CreateToggle({
+    Name = "Auto Hatch LTE",
+    CurrentValue = false,
+    Flag = "AutoHatchLTEToggle",
+    Callback = function(Value)
+        _G.autoHatchLTE = Value
+        autoHatchLTE()
+    end,
+})
+ 
+
+-- Dropdowns
+
+local EggDropdown = EggsTab:CreateDropdown({
+    Name = "Select Egg",
+    Options = {"Starter Egg","Wood Egg", "Jungle Egg", "Forest Egg", "Bee Egg", "Swamp Egg", "Snow Egg", "Desert Egg", "Death Egg", "Beach Egg", "Mine Egg", "Cloud Egg", "Coral Egg", "Dark Egg"},
+    CurrentOption = "",
+    Flag = "EggDropdown",
+    Callback = function(Option)
+    end,
+})
+
+local LTEggDropdown = EggsTab:CreateDropdown({
+    Name = "Limited Egg",
+    Options = {"75 Million Egg", "Winter Egg", "Ice Egg", "Neon Ice Egg"},
+    CurrentOption = "75 Million Egg",
+    Flag = "LTEggDropdown",
+    Callback = function(Option)
+    end,
+})
+
+local AutoRebirthAmountDropdown = FarmTab:CreateDropdown({
+    Name = "Auto Rebirth Amount",
+    Options = {"1", "5", "10", "20", "100", "500", "4000", "13500", "32000", "62500", "108000", "171500", "256000", "364500", "500000", "1000000"},
+    CurrentOption = "1",
+    Flag = "AutoRebirthAmountDropdown",
+    Callback = function(Value)
+        _G.rebirthAmount = Value
+    end,
+})
+
+-- Adaptive Inputs
+ 
+local Input = CharacterTab:CreateInput({
+    Name = "Custom Walkspeed",
+    PlaceholderText = "16",
+    RemoveTextAfterFocusLost = false,
+    Callback = function(Value)
+     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+    end,
+})
+
+-- Buttons
+
+local Button = MiscTab:CreateButton({
+    Name = "Spawn",
+    Callback = function()
+        game.ReplicatedStorage.Events.Teleport:FireServer(CFrame.new(77.7823868, 33.9778824, -480.402344, 0, 0, 1, 0, 1, 0, -1, 0, 0))
+    end,
+ })
+
+ local Button = MiscTab:CreateButton({
+    Name = "Forest Island",
+    Callback = function()
+        game.ReplicatedStorage.Events.Teleport:FireServer(CFrame.new(-163.984467, 987.596497, -403.339417, 1, 0, 0, 0, 1, 0, 0, 0, 1))
+    end,
+ })
+
+ local Button = MiscTab:CreateButton({
+    Name = "Flower Island",
+    Callback = function()
+        game.ReplicatedStorage.Events.Teleport:FireServer(CFrame.new(-179.51564, 1524.63098, -682.498718, -1, 0, -0, -0, 1, -0, -0, 0, -1))
+    end,
+ })
+
+ local Button = MiscTab:CreateButton({
+    Name = "Swamp Island",
+    Callback = function()
+        game.ReplicatedStorage.Events.Teleport:FireServer(CFrame.new(-264.358887, 2123.06299, -694.661316, -1, 0, -0, -0, 1, -0, -0, 0, -1))
+    end,
+ })
+
+ local Button = MiscTab:CreateButton({
+    Name = "Snow Island",
+    Callback = function()
+        game.ReplicatedStorage.Events.Teleport:FireServer(CFrame.new(-201.771973, 2944.48169, -470.408752, 0, 0, 1, 0, 1, 0, -1, 0, 0))
+    end,
+ })
+
+ local Button = MiscTab:CreateButton({
+    Name = "Desert Island",
+    Callback = function()
+        game.ReplicatedStorage.Events.Teleport:FireServer(CFrame.new(-166.285156, 4235.38916, -779.153137, 0, 0, 1, 0, 1, 0, -1, 0, 0))
+    end,
+ })
+
+ local Button = MiscTab:CreateButton({
+    Name = "Death Island",
+    Callback = function()
+        game.ReplicatedStorage.Events.Teleport:FireServer(CFrame.new(-276.201263, 5425.62158, -480.287781, 0, 0, 1, 0, 1, 0, -1, 0, 0))
+    end,
+ })
+
+ local Button = MiscTab:CreateButton({
+    Name = "Beach Island",
+    Callback = function()
+        game.ReplicatedStorage.Events.Teleport:FireServer(CFrame.new(-140.345093, 6881.63086, -495.682129, 0, 0, 1, 0, 1, 0, -1, 0, 0))
+    end,
+ })
+
+ local Button = MiscTab:CreateButton({
+    Name = "Mines Island",
+    Callback = function()
+        game.ReplicatedStorage.Events.Teleport:FireServer(CFrame.new(-243.258667, 8376.5166, -483.889771, 0, 0, 1, 0, 1, 0, -1, 0, 0))
+    end,
+ })
+
+ local Button = MiscTab:CreateButton({
+    Name = "Cloud Island",
+    Callback = function()
+        game.ReplicatedStorage.Events.Teleport:FireServer(CFrame.new(-253.303482, 11262.8818, -237.888596, 0, 0, 1, 0, 1, 0, -1, 0, 0))
+    end,
+ })
+
+ local Button = MiscTab:CreateButton({
+    Name = "Coral Island",
+    Callback = function()
+        game.ReplicatedStorage.Events.Teleport:FireServer(CFrame.new(-511.021118, 13812.0322, -543.241821, 0, 0, -1, 0, 1, -0, 1, 0, -0))
+    end,
+ })
+
+ local Button = MiscTab:CreateButton({
+    Name = "Darkheart Island",
+    Callback = function()
+        game.ReplicatedStorage.Events.Teleport:FireServer(CFrame.new(-408.69751, 17180.1387, -552.046448, 0, 0, 1, 0, 1, 0, -1, 0, 0))
+    end,
+ })
+
+local MiscLimitedTPSection = MiscTab:CreateSection("Limited Teleports") -- Section here, if I put above in the Sections comment then it would show all teleports under Limited Teleports
+
+local Button = MiscTab:CreateButton({
+    Name = "Winterest",
+    Callback = function()
+     game.ReplicatedStorage.Events.Teleport:FireServer(CFrame.new(-2951.70264, 149.202393, -5468.14453, 1, 0, 0, 0, 1, 0, 0, 0, 1))
+    end,
+ })
+
+ -- Load Configuration
+
+Rayfield:LoadConfiguration()
+end
+
+-- a literal baseplate
+
+if game.PlaceId == 4483381587 then
+    getgenv().SecureMode = true
+    
+    local Window = Rayfield:CreateWindow({
+       Name = "Noob Hub | a literal baseplate",
+       LoadingTitle = "a literal baseplate - Noob Hub",
+       LoadingSubtitle = "by Not_Noob",
+       ConfigurationSaving = {
+          Enabled = true,
+          FolderName = true, 
+          FileName = "NoobHub"
+       },
+       Discord = {
+          Enabled = true,
+          Invite = "zqZYaGxfVa",
+          RememberJoins = false
+       },
+       KeySystem = true,
+       KeySettings = {
+          Title = "Noob Hub",
+          Subtitle = "Noob Hub | Key System",
+          Note = "Join the discord (discord.gg/zqZYaGxfVa)",
+          FileName = "NoobHubKey",
+          SaveKey = true,
+          GrabKeyFromSite = true,
+          Key = "https://pastebin.com/raw/6qVXtYcY"
+       }
+    })
+    
+    -- Notifications
+    Rayfield:Notify({
+        Title = "Noob Hub | Info",
+        Content = "Press [RightShift] to hide GUI",
+        Duration = 6.5,
+        Image = 7733715400,
+        Actions = {
+           Ignore = {
+              Name = "Okay!",
+              Callback = function()
+              print("The user tapped Okay!")
+           end
+        },
+     },
+     })
+
+     Rayfield:Notify({
+        Title = "Updates",
+        Content = "Join the Discord to stay updated. discord.gg/zqZYaGxfVa",
+        Duration = 6.5,
+        Image = 7733715400,
+        Actions = {
+           Ignore = {
+              Name = "Okay!",
+              Callback = function()
+              print("The user tapped Okay!")
+           end
+        },
+     },
+     })
+    
+    -- Tabs
+    
+    local MainTab = Window:CreateTab("Main", 7734059095)
+    local ScriptsTab = Window:CreateTab("Scripts", 7733749837)
+    
+    -- Sections
+    
+    local CharacterSection = MainTab:CreateSection("Character")
+    
+    -- Labels
+    
+    local Label = ScriptsTab:CreateLabel("In Development, Join Discord for updates.")
+    
+    -- Sliders
+    
+    local Slider = MainTab:CreateSlider({
+       Name = "Walkspeed",
+       Range = {0, 200},
+       Increment = 1,
+       Suffix = "Speed",
+       CurrentValue = 16,
+       Flag = "WalkspeedSlider", 
+       Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+       end,
+    })
+    
+    -- Adaptive Inputs
+    
+    local Input = MainTab:CreateInput({
+       Name = "Custom Walkspeed",
+       PlaceholderText = "16",
+       RemoveTextAfterFocusLost = false,
+       Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+       end,
+    })
+    
+    
+    Rayfield:LoadConfiguration()
+    end
+
+-- Doors
+
+if game.PlaceId == 6516141723 then
+    getgenv().SecureMode = true
+    
+    local Window = Rayfield:CreateWindow({
+        Name = "Noob Hub | DOORS 👁️ [NEW]",
+        LoadingTitle = "Doors - Noob Hub",
+        LoadingSubtitle = "by Not_Noob",
+        ConfigurationSaving = {
+           Enabled = true,
+           FolderName = true,
+           FileName = "NoobHub"
+        },
+        Discord = {
+           Enabled = true,
+           Invite = "zqZYaGxfVa", 
+           RememberJoins = true 
+        },
+        KeySystem = true, 
+        KeySettings = {
+           Title = "Noob Hub",
+           Subtitle = "Noob Hub | Key System",
+           Note = "Join the Discord (discord.gg/zqZYaGxfVa)",
+           FileName = "NoobHubKey",
+           SaveKey = true,
+           GrabKeyFromSite = true, 
+           Key = "https://pastebin.com/raw/6qVXtYcY"
+        }
+     })
+
+     -- Notifications
+     Rayfield:Notify({
+         Title = "Noob Hub | Info",
+         Content = "Press [RightShift] to hide GUI",
+         Duration = 6.5,
+         Image = 7733715400,
+         Actions = {
+            Ignore = {
+               Name = "Okay!",
+               Callback = function()
+               print("The user tapped Okay!")
+            end
+         },
+      },
+      })
+
+      Rayfield:Notify({
+        Title = "Updates",
+        Content = "Join the Discord to stay updated. discord.gg/zqZYaGxfVa",
+        Duration = 6.5,
+        Image = 7733715400,
+        Actions = {
+           Ignore = {
+              Name = "Okay!",
+              Callback = function()
+              print("The user tapped Okay!")
+           end
+        },
+     },
+     })
+
+     local Tab = Window:CreateTab("Main", 7733765398)
+     local Section = Tab:CreateSection("Doors Main GUI's")
+     local Label = Tab:CreateLabel("Popular GUI's for Doors")
+     local TabUtil = Window:CreateTab("Utility", 7733964640)
+     local SectionUtil = TabUtil:CreateSection("Doors Utility GUIs")
+     local LabelUtil = TabUtil:CreateLabel("Utility GUIs for Doors")
+     local CreditsTab = Window:CreateTab("Credits", 7743869612)
+     local CreditsSection = CreditsTab:CreateSection("Credits")
+     local CreditsLabel = CreditsTab:CreateLabel("Not_Noob - Compiled all scripts and made GUI")
+     local DiscordSection = CreditsTab:CreateSection("Discord")
+     local CreditsDiscordLabel = CreditsTab:CreateLabel("Join the Discord for updates! discord.gg/zqZYaGxfVa")     
+     
+     local Button = Tab:CreateButton({
+         Name = "Vynixius Hub (My recommendation)",
+         Callback = function()
+             loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Vynixius/main/Doors/Script.lua"))()
+         end,
+     })
+     local Button = Tab:CreateButton({
+         Name = "Ominoux Hub",
+         Callback = function()
+     loadstring(game:HttpGet(('https://pastebin.com/raw/9QPGnLx6'),true))()
+     
+         end,
+     })
+     local Button = Tab:CreateButton({
+         Name = "Neverlose Hub",
+         Callback = function()
+             loadstring(game:HttpGet("https://raw.githubusercontent.com/LuaQLeak/neverlose.xyz/main/Doors.lua"))()
+         end,
+     })
+     local KeySection = Tab:CreateSection("Key Required")
+     local KeyLabel = Tab:CreateLabel("The GUIs below require a key")
+     local Button = Tab:CreateButton({
+        Name = "Crimson Hub",
+        Callback = function()
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/toosiwhip/statue/main/crimsonhub-statue.lua"))()
+        end,
+    })
+    local AndroidSection = Tab:CreateSection("Android Only")
+    local AndroidLabel = Tab:CreateLabel("The GUI below is Android only")
+     local Button = Tab:CreateButton({
+         Name = "Darkrai Hub (Android Only)",
+         Callback = function()
+             loadstring(game:HttpGet("https://raw.githubusercontent.com/GamingScripter/Darkrai-X/main/Games/Doors"))()
+         end,
+     })
+     local Button = TabUtil:CreateButton({
+         Name = "Get Crucifix",
+         Callback = function()
+             local Item = game:GetObjects("rbxassetid://11583101826")[1]
+     Item.Parent = game.Players.LocalPlayer.Backpack
+     
+         end,
+     })
+     local Button = TabUtil:CreateButton({
+         Name = "Entity Spawner Hub (Will close this GUI)",
+         Callback = function()
+             loadstring(game:HttpGet('https://raw.githubusercontent.com/plamen6789/DoorsEntitySummonerGUI/main/EntityGUI'))()
+         end,
+     })
+    end
