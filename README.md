@@ -11,6 +11,10 @@ This is the source of my Roblox Script Hub, Noob Hub.
 ```lua
 loadstring(game:HttpGet('https://raw.githubusercontent.com/BloodyToolzz/NoobHub/main/NoobHub'))()
 ```
+Doors loadstring
+```lua
+loadstring(game:HttpGet('https://raw.githubusercontent.com/BloodyToolzz/NoobHub/main/NoobHubDoors'))()
+```
 
 ## Key and updates
 Join the Discord server for the key: https://discord.gg/zqZYaGxfVa
