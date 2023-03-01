@@ -1,4 +1,8 @@
+![LastCommit](https://img.shields.io/github/last-commit/BloodyToolzz/NoobHub)
+![CommitActivity](https://img.shields.io/github/commit-activity/m/BloodyToolzz/NoobHub)
+![RepoStars](https://img.shields.io/github/stars/BloodyToolzz/NoobHub)
 # NoobHub
+
 This is the source of my Roblox Script Hub, Noob Hub. 
 
 ### <s>Reasons it's not obfuscated
