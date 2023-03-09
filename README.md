@@ -1,4 +1,6 @@
 # NoobHub
+This is the source of my Roblox Script Hub, Noob Hub. 
+
 
 <p align="center">
 <img src="https://img.shields.io/github/commit-activity/w/BloodyToolzz/NoobHub" alt="GitHub commit activity"/>
@@ -9,26 +11,28 @@
 <a href="https://github.com/BloodyToolzz/NoobHub/stargazers"><img src="https://badgen.net/github/stars/BloodyToolzz/NoobHub" alt="GitHub stars"/></a>
 </p>
 
+# Supported Games
+Below the the supported games for Noob Hub
+```
+a literal baseplate (for tests) | 4483381587
+Tapping Simulator | 9498006165
+PLS DONATE | 8737602449
+Doors | 6516141723
+Shockwave Racing | 9961650006
+Homework Printing Simulator | 11943871352
+```
 
-This is the source of my Roblox Script Hub, Noob Hub. 
-
-### <s>Reasons it's not obfuscated
-- Free obfuscators are destroying my script and are very easy to decompile. :/
-- Paid obfuscators are obviously goated, but I'm broke so I can't use them.
-
-> I need help from someone that has a paid obfuscator, like Luraph or something. I just want them to obfuscate the script for me so skids can't steal my hard work.
-</s>
-
-#### Loadstring
+## Loadstrings
+**Noob Hub Loadstring**
 ```lua
 loadstring(game:HttpGet('https://raw.githubusercontent.com/BloodyToolzz/NoobHub/main/NoobHub'))()
 ```
-Doors loadstring
+**Doors loadstring**
 ```lua
 loadstring(game:HttpGet('https://raw.githubusercontent.com/BloodyToolzz/NoobHub/main/NoobHubDoors'))()
 ```
 
-## Key and updates
+# Key and updates
 Join the Discord server for the key:
 <p align="center">
 <a href="https://discord.gg/zqZYaGxfVa"><img src="https://invidget.switchblade.xyz/zqZYaGxfVa" alt="Discord server"></a>
